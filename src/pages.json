@@ -1,0 +1,58 @@
+{
+	"easycom": {
+		"autoscan": true,
+		"custom": {
+			"^sar-(.*)": "sard-uniapp/components/$1/$1.vue"
+		}
+	},
+	"pages": [
+		{
+			"path": "pages/index/index"
+		},
+		{
+			"path": "pages/cart/index"
+		},
+		{
+			"path": "pages/mine/index"
+		},
+		{
+			"path": "pages/menu/index"
+		},
+		{
+			"path": "pages/optional/index"
+		}
+	],
+	"tabBar": {
+		"selectedColor": "#e43130",
+		"color": "#333333",
+		"custom": true,
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"iconPath": "/static/tabBar/house-line.png",
+				"selectedIconPath": "/static/tabBar/house-line-fill.png"
+			},
+			{
+				"pagePath": "pages/menu/index",
+				"iconPath": "/static/tabBar/FluentDrinkToGo20Regular.png",
+				"selectedIconPath": "/static/tabBar/FluentDrinkToGo20Filled.png"
+			},
+			{
+				"pagePath": "pages/cart/index",
+				"iconPath": "/static/tabBar/MdiAccountCircleOutline.png",
+				"selectedIconPath": "/static/tabBar/MdiAccountCircle.png"
+			},
+			{
+				"pagePath": "pages/mine/index",
+				"iconPath": "/static/tabBar/MdiAccountCircleOutline.png",
+				"selectedIconPath": "/static/tabBar/MdiAccountCircle.png"
+			}
+		]
+	},
+	"globalStyle": {
+		"backgroundTextStyle": "light",
+		"navigationBarBackgroundColor": "#fff",
+		"navigationBarTextStyle": "black",
+		"navigationStyle": "custom"
+	}
+}

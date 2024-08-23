@@ -1,0 +1,19 @@
+page {
+    // # 主题色
+    --sar-primary: #6BDBBF;
+    --sar-secondary: var(--sar-gray-600);
+    --sar-success: var(--sar-green);
+    --sar-info: var(--sar-cyan);
+    --sar-warning: var(--sar-yellow);
+    --sar-danger: #FF456E;
+    --sar-neutral: var(--sar-gray-700);
+
+    // # 主题色 rgb
+    --sar-primary-rgb: var(--sar-blue-rgb);
+    --sar-secondary-rgb: var(--sar-gray-600-rgb);
+    --sar-success-rgb: var(--sar-green-rgb);
+    --sar-info-rgb: var(--sar-cyan-rgb);
+    --sar-warning-rgb: var(--sar-yellow-rgb);
+    --sar-danger-rgb: var(--sar-red-rgb);
+    --sar-neutral-rgb: var(--sar-gray-700-rgb);
+}

@@ -58,6 +58,7 @@ export default defineConfig({
     },
   },
   build: {
-    minify: 'terser'
-  }
+    target: 'esnext', // 确保目标为 ES Modules
+    minify: 'terser',
+  },
 })

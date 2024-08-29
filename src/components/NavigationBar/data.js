@@ -9,6 +9,7 @@ export const data = [
     title: 'Cart',
     icon: 'icon-[nimbus--shopping-cart]"></span>',
     router: '/pages/cart/index',
+    quantity: 5,
   },
   {
     title: 'Profile',

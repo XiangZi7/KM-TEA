@@ -1,6 +1,6 @@
 {
-    "name" : "",
-    "appid" : "",
+    "name" : "km-cofe",
+    "appid" : "__UNI__C89DB31",
     "description" : "",
     "versionName" : "1.0.0",
     "versionCode" : "100",
@@ -52,9 +52,17 @@
     "mp-weixin" : {
         "appid" : "wxb293fec00aa05aa1",
         "setting" : {
-            "urlCheck" : false
+            "urlCheck" : false,
+            "minified" : true,
+            "postcss" : false,
+            "es6" : true
         },
-        "usingComponents" : true
+        "usingComponents" : true,
+        "permission" : {
+            "scope.userLocation" : {
+                "desc" : "获取附近奶茶店地址"
+            }
+        }
     },
     "mp-alipay" : {
         "usingComponents" : true
@@ -65,8 +73,8 @@
     "mp-toutiao" : {
         "usingComponents" : true
     },
-    "uniStatistics": {  
-        "enable": false
+    "uniStatistics" : {
+        "enable" : false
     },
     "vueVersion" : "3"
 }

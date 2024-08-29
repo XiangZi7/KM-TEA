@@ -7,14 +7,12 @@ export const mainData = [
         title: '冰吸生椰拿铁',
         price: 15.08,
         originalPrice: 19,
-        lactoseFree: '0乳糖', // 是否0乳糖
         imageUrl: '../../static/ruix/1.webp', // 图片路径
       },
       {
         title: '冰吸生椰拿铁',
         price: 15.08,
         originalPrice: 19,
-        lactoseFree: '0乳糖', // 是否0乳糖
         imageUrl: '../../static/ruix/4.webp', // 图片路径
       },
     ],
@@ -27,7 +25,6 @@ export const mainData = [
         title: '冰吸生椰拿铁',
         price: 15.08,
         originalPrice: 19,
-        lactoseFree: '0乳糖', // 是否0乳糖
         imageUrl: '../../static/ruix/1.webp', // 图片路径
       },
     ],
@@ -40,21 +37,18 @@ export const mainData = [
         title: '冰吸生椰拿铁',
         price: 15.08, 
         originalPrice: 19,
-        lactoseFree: '0乳糖', // 是否0乳糖
         imageUrl: '../../static/ruix/3.webp', // 图片路径
       },
       {
         title: '冰吸生椰拿铁',
         price: 15.08,
         originalPrice: 19,
-        lactoseFree: '0乳糖', // 是否0乳糖
         imageUrl: '../../static/ruix/4.webp', // 图片路径
       },
       {
         title: '冰吸生椰拿铁',
         price: 15.08,
         originalPrice: 19,
-        lactoseFree: '0乳糖', // 是否0乳糖
         imageUrl: '../../static/ruix/2.webp', // 图片路径
       },
     ],

@@ -1,0 +1,22 @@
+export const data = [
+    {
+        title:"点餐",
+        color:"text-[#FF456E]",
+        icon:"icon-[ci--coffee]"
+    },
+    {
+        title:"门店",
+        color:"text-[#6BDBBF]",
+        icon:"icon-[icon-park-outline--local]"
+    },
+    {
+        title:"礼品卡",
+        color:"text-[#FAC9C0]",
+        icon:"icon-[tabler--gift]"
+    },
+    {
+        title:"优惠券",
+        color:"text-[#FF456E]",
+        icon:"icon-[mingcute--bank-card-line]"
+    },
+]

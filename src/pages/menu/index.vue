@@ -13,9 +13,10 @@ const state = reactive({
     { title: '每周9.9' },
     { title: '下午茶9.9起' },
   ],
-  currentId: 'milk-tea',
+  currentId: '1',
+  menuList: [],
 })
-const { search, TabsList, selectedIndex, currentId, Screenheight } =
+const { search, TabsList, selectedIndex, currentId, Screenheight, menuList } =
   toRefs(state)
 
 onLoad(() => {
@@ -26,6 +27,10 @@ onLoad(() => {
     stsyem.safeArea.height - (menuButtonInfo.top + menuButtonInfo.height + 50)
   state.search.searchBarTop = menuButtonInfo.top
   state.search.searchBarHeight = menuButtonInfo.height
+
+  httpGet('menu/menu').then(({ data }) => {
+    state.menuList = data
+  })
 })
 
 const showOption = () => {
@@ -92,18 +97,19 @@ const scrollToCategory = (id) => {
       <!-- 侧边导航栏 -->
       <nav class="w-1/4 overflow-x-hidden bg-white">
         <ul>
-          <li
-            v-for="(item, index) in mainData"
-            :key="index"
-            @click="scrollToCategory(item.id)"
-            class="cursor-pointer text-sm p-2 transform duration-300 text-center"
-            :class="{
-              'border-[var(--sar-primary)] rounded-r-lg border-l-4 bg-gradient-to-r from-green-100/50 to-white':
-                currentId == item.id,
-            }"
-          >
-            {{ item.title }}
-          </li>
+          <template v-for="(item, index) in menuList" :key="index">
+            <li
+              v-if="item.children.length > 0"
+              @click="scrollToCategory(item.id)"
+              class="cursor-pointer text-sm p-2 transform duration-300 text-center"
+              :class="{
+                'border-[var(--sar-primary)] rounded-r-lg border-l-4 bg-gradient-to-r from-green-100/50 to-white':
+                  currentId == item.id,
+              }"
+            >
+              {{ item.title }}
+            </li>
+          </template>
         </ul>
       </nav>
 
@@ -111,52 +117,53 @@ const scrollToCategory = (id) => {
       <scroll-view
         class="w-3/4 flex-1 h-full overflow-x-hidden rounded-lg bg-white"
         scroll-y
-        :scroll-into-view="currentId"
+        :scroll-into-view="'cofe' + currentId"
         scroll-with-animation
       >
         <view class="py-2 h-full w-full">
-          <div
-            v-for="item in mainData"
-            :key="item.id"
-            :id="item.id"
-            class="p-3"
-          >
-            <h2 class="text-sm font-bold mb-4">{{ item.title }}</h2>
-            <ul class="list-disc">
-              <li
-                v-for="(child, index2) in item.children"
-                :key="index2"
-                class="mb-4"
-              >
-                <div class="flex items-center gap-2">
-                  <div
-                    class="w-16 h-16 bg-[#f3f3f3] rounded-full flex items-center justify-center overflow-hidden"
-                  >
-                    <image :src="child.imageUrl" class="w-full h-full" />
-                  </div>
-                  <view class="flex-1">
-                    <h3 class="font-semibold text-sm">{{ child.title }}</h3>
-                    <text class="text-sm text-[var(--sar-primary)]"
-                      >￥{{ child.price.toFixed(2) }}</text
+          <template v-for="item in menuList" :key="item.id">
+            <div
+              :id="'cofe' + item.id"
+              class="p-3"
+              v-if="item.children.length > 0"
+            >
+              <h2 class="text-sm font-bold mb-4">{{ item.title }}</h2>
+              <ul class="list-disc">
+                <li
+                  v-for="(child, index2) in item.children"
+                  :key="index2"
+                  class="mb-4"
+                >
+                  <div class="flex items-center gap-2">
+                    <div
+                      class="w-16 h-16 bg-[#f3f3f3] rounded-full flex items-center justify-center overflow-hidden"
                     >
-                    <view class="flex justify-between items-center">
-                      <view class="flex flex-col">
-                        <text class="text-xs text-gray-500">{{
-                          child.lactoseFree
-                        }}</text>
-                      </view>
-                      <view>
-                        <span
-                          class="icon-[ph--plus-circle-fill] text-[var(--sar-danger)] text-2xl"
-                          @tap="showOption"
-                        ></span>
+                      <image :src="child.imageUrl" class="w-full h-full" />
+                    </div>
+                    <view class="flex-1">
+                      <h3 class="font-semibold text-sm">{{ child.title }}</h3>
+                      <text class="text-sm text-[var(--sar-primary)]"
+                        >￥{{ child.price.toFixed(2) }}</text
+                      >
+                      <view class="flex justify-between items-center">
+                        <view class="flex flex-col">
+                          <text class="text-xs text-gray-500 line-clamp-2">{{
+                            child.description
+                          }}</text>
+                        </view>
+                        <view>
+                          <span
+                            class="icon-[ph--plus-circle-fill] text-[var(--sar-danger)] text-2xl"
+                            @tap="showOption"
+                          ></span>
+                        </view>
                       </view>
                     </view>
-                  </view>
-                </div>
-              </li>
-            </ul>
-          </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </template>
         </view>
       </scroll-view>
     </view>

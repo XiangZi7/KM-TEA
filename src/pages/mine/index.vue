@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const state = reactive({
   list: [],
+  showLoading: false,
 })
 const { list } = toRefs(state)
 
@@ -15,6 +16,11 @@ const topStyle = computed(() => {
   // #endif
   return padding
 })
+
+// 微信账号一键登录
+const getPhoneNumber = (info: any) => {
+  console.log('🚀 => info:', info)
+}
 </script>
 <template>
   <div class="flex flex-col h-full">
@@ -23,63 +29,18 @@ const topStyle = computed(() => {
       :style="{ paddingTop: topStyle + 'px' }"
     >
       <h1 class="text-xl font-bold">我的</h1>
-      <div class="flex space-x-2">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="lucide lucide-bell w-6 h-6"
-        >
-          <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path>
-          <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg
-        ><svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="lucide lucide-settings w-6 h-6"
-        >
-          <path
-            d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"
-          ></path>
-          <circle cx="12" cy="12" r="3"></circle>
-        </svg>
-      </div>
     </header>
     <div class="p-4 bg-[var(--sar-primary)] text-white">
       <div class="flex items-center space-x-4">
-        <div
-          class="w-16 h-16 bg-white rounded-full flex items-center justify-center"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="lucide lucide-user w-8 h-8 text-[#00704A]"
-          >
-            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-            <circle cx="12" cy="7" r="4"></circle>
-          </svg>
+        <div class="w-16 h-16 rounded-full">
+          <image
+            src="https://avatars.githubusercontent.com/u/67356803?v=4"
+            mode="scaleToFill"
+            class="w-full h-full rounded-full"
+          />
         </div>
         <div>
-          <h2 class="font-bold text-lg">张三</h2>
+          <h2 class="font-bold text-lg">YXCR</h2>
           <p class="text-sm">会员号: 1234 5678 9012</p>
         </div>
       </div>
@@ -135,6 +96,13 @@ const topStyle = computed(() => {
         </div>
         <view class="mt-2">
           <sar-button> 充值 </sar-button>
+          <button
+            class="WX-login-btn"
+            @getphonenumber="getPhoneNumber"
+            openType="getPhoneNumber"
+          >
+            微信登录
+          </button>
         </view>
       </div>
       <div class="bg-white rounded-lg p-4">
@@ -169,7 +137,7 @@ const topStyle = computed(() => {
         <div class="grid grid-cols-4 gap-4 text-center">
           <div>
             <div
-              class="w-12 h-12 bg-[#f3f3f3] rounded-full flex items-center justify-center mx-auto"
+              class="w-12 h-12 bg-[#f3f3f3] rounded-full flex items-center justify-center"
             >
               <span
                 class="icon-[icon-park-outline--local] text-2xl text-[var(--sar-primary)]"
@@ -179,7 +147,7 @@ const topStyle = computed(() => {
           </div>
           <div>
             <div
-              class="w-12 h-12 bg-[#f3f3f3] rounded-full flex items-center justify-center mx-auto"
+              class="w-12 h-12 bg-[#f3f3f3] rounded-full flex items-center justify-center"
             >
               <span
                 class="icon-[ph--star-bold] text-2xl text-[var(--sar-primary)]"
@@ -189,7 +157,7 @@ const topStyle = computed(() => {
           </div>
           <div>
             <div
-              class="w-12 h-12 bg-[#f3f3f3] rounded-full flex items-center justify-center mx-auto"
+              class="w-12 h-12 bg-[#f3f3f3] rounded-full flex items-center justify-center"
             >
               <span
                 class="icon-[tabler--gift] text-2xl text-[var(--sar-primary)]"
@@ -199,7 +167,7 @@ const topStyle = computed(() => {
           </div>
           <div>
             <div
-              class="w-12 h-12 bg-[#f3f3f3] rounded-full flex items-center justify-center mx-auto"
+              class="w-12 h-12 bg-[#f3f3f3] rounded-full flex items-center justify-center"
             >
               <span
                 class="icon-[solar--card-2-broken] text-2xl text-[var(--sar-primary)]"
